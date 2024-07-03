@@ -62,7 +62,7 @@ function check(description, array_in) {
     let div = document.createElement("div");
     div.innerHTML = "<strong>Массив:</strong><br> [" + array_in + "]";
     let stream = document.createElement("code");
-    stream.innerHTML = "<strong>Сжатая строка:</strong><br>" + compressed;
+    stream.innerHTML = "<strong>Сжатая строка длиной:" + compressed.length + "</strong><br>" + compressed;
     let main = document.getElementById("main");
     main.appendChild(label)
     main.appendChild(div);
@@ -89,9 +89,10 @@ window.onload = () => {
 
     [1, 2, 3].map(v => {
         let array = [];
-        let ten = Math.pow(10, v);
-        for (let i = 0; i < 1000; i++) array[i] = ten + Math.trunc(Math.random() * ten);
-        check("Длина каждого числа " + v, array);
+        let one = Math.pow(10, (v - 1));
+        let ten = Math.pow(10, (v + 0)) - one;
+        for (let i = 0; i < 1000; i++) array[i] = one + Math.trunc(Math.random() * ten);
+        check("Числа от " + one + " до " + ten, array);
     })
 
 }

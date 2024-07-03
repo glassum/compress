@@ -1,4 +1,5 @@
-body { margin:0; padding:0 0.5rem; font-family:Verdana; font-size: 1rem;  }
+body { font-family:Verdana; font-size: 1rem; margin:0; padding:0 0.5rem; }
+strong { font-family:Verdana; }
 
-h4 { margin:0.5rem 0 0 0; text-decoration: underline; }
+h4 { margin:0.5rem 0 0 0; text-decoration:underline;  }
 #main div { margin-top:0.25rem; }
