@@ -1,5 +1,8 @@
 body { font-family:Verdana; font-size: 1rem; margin:0; padding:0 0.5rem; }
 strong { font-family:Verdana; }
 
-h4 { margin:0.5rem 0 0 0; text-decoration:underline;  }
+h3 { margin:1.5rem 0 0.5rem; text-decoration:underline; }
+h4 { margin:0.25rem 0; }
+div { margin:0.25rem 0; }
+p { margin:0.25rem 0; background:#E7E7E7; /*white-space:preserve-breaks;*/ }
 #main div { margin-top:0.25rem; }

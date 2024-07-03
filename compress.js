@@ -50,23 +50,25 @@ function fromChars(string) {
 function check(description, array_in) {
     let compressed = toChars(toBits(array_in));
     console.log(description, ": [" + array_in.length + "]", array_in);
-    console.log(compressed);
     let array_out = fromBits(fromChars(compressed));
     console.log("Совпадают:",
         array_in.length === array_out.length &&
         !array_in.some((v, i) => array_in[i] !== array_out[i])
     );
 
-    let label = document.createElement("h4");
-    label.innerHTML = description + ": [" + array_in.length + "]";
+    let h3 = document.createElement("h3");
+    h3.innerHTML = description + " [" + array_in.length + "]:";
     let div = document.createElement("div");
-    div.innerHTML = "<strong>Массив:</strong><br> [" + array_in + "]";
-    let stream = document.createElement("code");
-    stream.innerHTML = "<strong>Сжатая строка длиной:" + compressed.length + "</strong><br>" + compressed;
+    div.innerHTML = /*"<h4>Source array:</h4> */"[" + array_in + "]";
+    let h4 = document.createElement("h4");
+    h4.innerHTML = "<h4>Compressed length: " + compressed.length + "</h4>";
+    let p = document.createElement("p");
+    p.innerText = compressed;
     let main = document.getElementById("main");
-    main.appendChild(label)
+    main.appendChild(h3)
     main.appendChild(div);
-    main.appendChild(stream);
+    main.appendChild(p);
+    main.appendChild(h4)
 }
 
 window.onload = () => {
@@ -74,7 +76,7 @@ window.onload = () => {
     [50, 100, 500, 1000].map(v => {
         let array = [];
         for (let i = 0; i < v; i++) array[i] = 1 + Math.trunc(Math.random() * Max);
-        check("Случайные", array);
+        check("Random from 1 to 1000", array);
     })
 
     {
@@ -84,7 +86,7 @@ window.onload = () => {
             array[i * 3 + 1] = i;
             array[i * 3 + 2] = i;
         }
-        check("По три каждого", array);
+        check("Three of a kind", array);
     }
 
     [1, 2, 3].map(v => {
@@ -92,7 +94,7 @@ window.onload = () => {
         let one = Math.pow(10, (v - 1));
         let ten = Math.pow(10, (v + 0)) - one;
         for (let i = 0; i < 1000; i++) array[i] = one + Math.trunc(Math.random() * ten);
-        check("Числа от " + one + " до " + ten, array);
+        check("Random from " + one + " to " + (ten + one - 1), array);
     })
 
 }
